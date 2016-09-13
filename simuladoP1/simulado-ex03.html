@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Simulado ex03</title>
+	</head>
+	<body>
+		<input type="text" id="texto" onfocus="foc()" onblur="blu()">
+	
+		<script>
+			//Os eventos onfcus e onblur representam a acao foco (em uma caixa de texto, por exemplo) e a acao
+			//de desfocar. Um numero deve ser digitado em uma caixa de texto. Ao focar na caixa, sua cor de
+			//fundo (background) deve ficar na cor amarela. Ao sair da caixa (desfocar), a cor de fundo deve ficar
+			//verde se o numero for par e azul se o numero for impar.
+			function foc(){
+				var texto = document.querySelector("#texto");
+				texto.style.backgroundColor = "yellow";
+			}
+			
+			function blu(){
+				var texto = document.querySelector("#texto");
+				var valor = parseInt(texto.value); //texto.value eh uma string, precisa conventer
+				if(valor % 2 == 0){
+					texto.style.backgroundColor = "green";
+				}else{
+					texto.style.backgroundColor = "blue";
+				}
+			}
+			
+		</script>
+
+	</body>
+</html>

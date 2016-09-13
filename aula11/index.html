@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+		</script>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Aula 03-11</title>
+	</head>
+	<body>
+		<p>Clique aqui 1</p>
+		<p>Clique aqui 2</p>
+		<p>Clique aqui 3</p>
+		<p id="p1">Clique id P1</p>
+		<button id="b1">OK</button>
+		<button id="b2">OK</button>
+		<button id="b3">OK</button>
+		<button id="b4">OK</button>
+		<form>
+		Nome: <input type="number" name="nome" id="t1">
+		</form>
+		<button id="b5">OK</button>
+		<button id="b6">OK</button>
+		<br>
+		<br>
+		<div>Clique div 1</div>
+		<div>Clique div 2</div>
+		<div>Clique div 3</div>
+
+		<script>
+			$(main);
+			function main(){
+				//regra geral: $(seletor).evento(acao)
+				$("p").click(function(){
+					$(this).hide();
+				});
+				
+				$("div").click(function(){
+					$(this).hide();
+				});
+				
+				$("p").click(function(){
+					alert($(this).html());
+				});
+				
+				$("p, div").click(function(){
+					alert($(this).html());
+				});
+				
+				//exercicio: esconder ao clicar uma tag p de id p1.
+				//para fazer aparecer eh show
+				$("#p1").click(function(){
+					$(this).hide();
+				});
+				
+				//exercicio: esconder todos os paragrafos ao clicar no botao.
+				//para fazer aparecer eh show
+				$("#b1").click(function(){
+					$("p").hide();
+				});
+				
+				//exercicio: ao clicar no botao, mostre na tela (alert) o conteudo de todos os paragrafos de forma
+				//concatenada.
+				$("#b2").click(function(){
+					var a = Array.prototype.slice.call($("p"));
+					var f = function(x,y){
+						return x+" "+y.innerHTML;
+					};
+					alert(a.reduce(f,""));
+				});
+				
+				//exercicio: ao clicar "duas vezes" no botao, pinte os paragrafos com fundo amarelo
+				$("#b3").dblclick(function(){
+					$("p").css("background-color","yellow");
+				});
+				
+				//exercicio: ao clicar "duas vezes" em um paragrafo, deixe o fundo azul
+				$("p").dblclick(function(){
+					$(this).css("background-color","blue");
+				});
+				
+				//ao clicar em um botao, mostre via alert: Ola + conteudo de todos os paragrafos.
+				$("#b4").click(function(){
+					var a = Array.prototype.slice.call($("p"));
+					var f = function(x,y){
+						return x+" "+y.innerHTML;
+					});
+					alert(a.reduce(f,"Ola "));
+				};
+				
+				//muda o valor de dentro
+				$("#b5").click(function){
+					alert($("#t1").val("Ola!"));
+				};
+				
+				//faca um script que ao ser digitado um numero na caixa esta ficara vermelha se o numero for 
+				//negativo (<0) e azul caso seja positivo ou zero (>=0). a acao ocorre no evento blur.
+				//ao focar a caixa deve voltar para a cor branca.
+				$("#t1").focus(function(){
+					$(this).css("background-color","white");
+				});
+				$("#t1").blur(function(){
+					var num = $(this).val()
+					if(num >= 0)
+						$(this).css("background-color","blue");
+					else
+						$(this).css("background-color","red");
+				});
+				
+				//ao digitar uma palavra em uma caixa de texto, mostre em um pargrafo quantos caracteres
+				//foram digitados.
+				
+			}
+			
+
+			
+			
+		</script>
+	</body>
+</html>

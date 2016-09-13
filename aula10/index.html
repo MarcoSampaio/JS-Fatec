@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Aula 27-10</title>
+	</head>
+	<body>
+		<button onclick="teste()">Chamar</button>
+		<button onclick="teste1()">Chamar</button>
+		<button onclick="teste2()">Chamar</button>
+		<button onclick="teste3()">Chamar</button>
+		<button onclick="teste4()">Chamar</button>
+		<button onclick="teste5()">Chamar</button>
+		
+		<script>// pseudo-classe / prototipagem
+			function teste(){//construtor
+				var Cachorro = function(nome){
+					this.nome = nome;
+				};
+				var c1 = new Cachorro("Rex");
+				var c2 = new Cachorro("Bobby");
+				
+				alert(c1.nome);
+				alert(c2.nome);
+			}
+			
+			//fazer pseudo-classe gato com os atributos nome e idade.
+			//criar tres objetos gato e mostre o nome e a idade dos 3.
+			function teste1(){
+				var Gato = function(nome, idade){
+					this.nome = nome;
+					this.idade = idade;
+				};
+				var g1 = new Gato("Marco",38);
+				var g2 = new Gato("Cat",8);
+				var g3 = new Gato("Tom",5);
+				
+				alert("O gato "+g1.nome+" tem "+g1.idade+" anos.");
+				alert("O gato "+g2.nome+" tem "+g2.idade+" anos.");
+				alert("O gato "+g3.nome+" tem "+g3.idade+" anos.");
+			}		
+
+			function teste2(){
+				var Cachorro = function(nome, raca){
+					this.nome = nome;
+					this.nome = raca;
+				};
+				
+				Cachorro.prototype.cdp = "";
+				//metodo
+				Cachorro.prototype.setCdp = function(cdp){
+				this.cdp = cdp;
+				};
+				
+				var c1 = new Cachorro("Rex","viralata");
+				var c2 = new Cachorro("Bobby","yorkshire");
+				
+				c1.setCdp("azul");
+				c2.setCdp("vermelho");
+				
+				alert(c1.nome);
+				alert(c2.nome);
+				alert(c1.raca);
+				alert(c2.raca);
+				alert(c1.cdp);
+				alert(c2.cdp);
+			}
+			
+			//a pseudo-classe contador tera um atributo que representa a contagem de pessoas em um ambiente
+			//as funcionalidades sao: contar e resetar
+			function teste3(){
+				var Contador = function(){
+					this.numero = 0;
+				};
+				
+				Contador.prototype.contar = function(){
+					this.numero = this.numero + 1;
+				};
+			
+				Contador.prototype.resetar = function(){
+					this.numero = 0;
+				}
+				
+				var c1 = new Contador();
+				for(var i=0; i<3200; i++)
+					c1.contar();
+				
+				alert(c1.numero);
+				c1.resetar();
+				alert(c1.numero);
+			}
+			
+			//faca uma pseudo-classe Revolver que possua:
+			//- atributos: qtMax e qtMunicao
+			//- metodos: atirar e recarregar
+			//ao atirar, uma municao eh gasta, se houver. ao recarregar, uma municao eh colocada de volta se
+			//houver espaço. o atributo qtMunicao representa a quantidade de municao e o qtMax a quantidade 
+			//maxima permitida.
+			function teste4(){
+				var Revolver = function(){
+					this.qtMax = 12;
+					this.qtMunicao = 12;
+				}
+				
+				Revolver.prototype.atirar = function(){
+					this.qtMax = this.qtMax - 1;
+				}
+				
+				Revolver.prototype.recarregar = function(){
+					this.qtMunicao = this.qtMunicao + 1;
+				}
+				
+				var contador = new Revolver();
+				
+				for(var i=0; i>0; i++)
+					contador.atirar();
+					
+				for(var i=0; i<=12; i++)
+					contador.recarregar();
+				
+				alert(contador.qtMax);
+				alert (contador.qtMunicao);
+			}
+			
+			
+			//faca a pseudo-classe Quadrado. todo Quadrado possui uma medida de lado e a possibilidade de calcular
+			//area e perimetro.
+		
+			function teste5(){
+				var  = function(){
+				
+				}
+			}
+			
+		
+		</script>
+	</body>
+</html>

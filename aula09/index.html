@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Aula 20-10</title>
+	</head>
+	<body>
+		<p>UM</p>
+		<p>DOIS</p>
+		<p>TRES</p>
+		<p>QUATRO</p>
+		
+		<button onclick="teste()">OK</button>
+		<button onclick="teste1()">OK</button>
+		<button onclick="teste2()">OK</button>
+		<button onclick="teste3()">OK</button>
+		<button onclick="teste4()">OK</button>
+		
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		<!-- exercicio corrigido no moodle
+		<img src="imagem1.jpg" style="position:absolute; left:0; top:100; width: 400; height:200"/>
+		<img src="imagem2.jpg" style="position:absolute; left:410; top:100; width: 400; height:200"/>
+		<img src="imagem3.jpg" style="position:absolute; left:820; top:100; width: 400; height:200"/>
+		<button onclick="swapImage">OK</button>
+		-->
+		
+		<br>
+		<br>
+		<br>
+		
+		<button onclick="teste5()">OK</button>
+		<button onclick="teste6()">OK</button>
+		<button onclick="teste7()">OK</button>
+		<button onclick="teste8()">OK</button>
+		
+		<script>//para trabalhar com map tem que transformar o objeto "p" em array.
+			function teste(){
+				var ps = document.getElementsByTagName("p");
+				var aux = Array.prototype.slice.call(ps);
+				var mudaAzul = function(p){
+					p.style.color = "blue";
+				};
+				aux.map(mudaAzul);
+			}
+			
+			function teste1(){
+				var ps = document.getElementsByTagName("p");
+				var aux = Array.prototype.slice.call(ps);
+				var mudaAzul = function(p){//para mexer com map sempre vai ter esta funcao
+					alert(p.innerHTML);
+				};
+				aux.map(mudaAzul);
+			}
+			
+			function teste2(){
+				var ps = document.getElementsByTagName("p");
+				var aux = Array.prototype.slice.call(ps);
+				var mudaAzul = function(p){
+					alert(p.innerHTML+'A');//concatenado com 'A'
+				};
+				aux.map(mudaAzul);
+			}
+			
+			function teste3(){
+				var ps = document.getElementsByTagName("p");
+				var aux = Array.prototype.slice.call(ps);
+				var mostrar = function(p){
+					return p.innerHTML;
+				};
+				var tiraTres = function(x){
+					return x.innerHTML != "TRES";
+				}
+				alert(aux.filter(tiraTres).map(mostrar));
+			}
+			
+			function teste4(){
+				var ps = document.getElementsByTagName("p");
+				var aux = Array.prototype.slice.call(ps);
+				var mostrar = function(p){
+					return p.innerHTML;
+				};
+				var tiraTres = function(x){
+					return x.innerHTML != "DOIS" && x.innerHTML != "QUATRO";
+				}
+				alert(aux.filter(tiraTres).map(mostrar));
+			}
+			
+			/*exercicio corrigido no moodle
+			function swapImage(){
+				var imgs = document.getElementsByTagName("img");
+				var aux = Array.prototype.slice.call(imgs);
+				var g = function(p){
+					var l = p.style.left.length;
+					var a = parseInt(p.style.lefth.substring(0,l-2));
+					p.style.left = (a+410)%1230;
+				};
+				aux.map(g);
+			}	
+			function teste();
+				swapImage();
+				setTimeout("teste()",2000);
+			}
+			*/
+			
+			function teste5(){
+				var v = [1,2,3,4,5];
+				var f = function(x){
+					return 2*x;
+				}
+				var g = function(x){
+					return x>5;
+				}
+				//o map retorna um vetor de mesmo tamanho
+				// o filter na um vetor de tamanho menor ou igual ao original
+				// o slice eh usado para converter de objeto para array(vetor)
+				alert(v.map(f).filter(g).map(f));
+				//1 2 3 4 5
+				//2 4 6 8 10
+				//6 8 10
+				//12 16 20
+			}
+		
+			function teste6(){
+				var v = [1,2,3,4,5];
+				//o reduce eh usado para afzer acumulacoes de forma funcional. ele aceita dois argumentos
+				//f: uma funcao contendo DOIS parametros
+				//val: um valor inicial
+				//a funcao f nos conta como procede com um valor inicial em um valor da lista. a funcao faz
+				//uma operacao com o valor inicial e o valor da lista. apos a operacao a resultante vira o 
+				//valor inicial e o elemento da lista eh removido. O processo continua ate a lista ficar VAZIA.
+				var soma = 0;
+				for(var i=0; i<v.length;i++)
+					soma = soma + v[i];
+				alert(soma);
+				//map e filter SEPRE UM parametro
+				//redice SEMPRE DOIS parametro
+				alert(v.reduce(function(x,y){//x sempre vem do inicial e y sempre vem da lista
+					return x+y;
+				},0));
+			}
+
+			function teste7(){
+				var v = [1,2,3,4,5];
+				var soma = 0;
+				for(var i=0; i<v.length;i++)
+					soma = soma + v[i];
+				alert(soma);
+
+				alert(v.reduce(function(x,y){
+					return x*y;
+				},0));
+			}
+			
+			function teste8(){
+				var ps = document.getElementsByTagName("p");
+				var aux = Array.prototype.slice.call(ps);
+
+				alert(aux.reduce(function(x,y){
+					return x+" "+y.innerHTML;
+				},"Frase:"));
+			}
+			
+		
+		
+			</script>
+	</body>
+</html>

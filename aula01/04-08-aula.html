@@ -1,0 +1,42 @@
+<html> 
+<head>
+	<script>
+		//definir uma funcao é diferente de chamar uma funçao
+		y = 9; //"y = 9" é uma variavel global. qualquer funcao enxerga y
+		function ola(){
+			var z = 7; //"var z" é uma variavel local. a palavra reservada var faz com que o escopo seja local a funcao declarada (neste caso funcao ola()) -> sempre usar variavel local.
+			alert(y);
+		}
+		
+		function ola2(){
+			alert(z);
+		}
+		
+		//todo parametro é uma variavel local. sao variaveis auxiliares da funcao que permite a entrada de valores externo (outras funcoes) a ela.
+		function somar(a,b){
+			var soma = a+b;
+			alert(soma);
+		}
+		
+		function maximo(c,d){
+			if(c>d){
+				alert("c eh maior");
+			}else{
+				if(c<d){
+					alert("c eh menor");
+				}else{
+					alert("c eh menor");
+				}
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	<script> ola();</script>
+	<script> somar(3,8);</script><!-- o argumento 3 sera atribuido a variavel A. o argumento 3 sera atribuido a variavel B.-->
+	<script> somar('3','8');</script><!-- a soma também acontece com string. --> 
+	<script> somar(3,'8');</script> <!-- o javascript sempre tenta converter sempre que possivel converter para string -->
+	<script> maximo(7,9);</script>
+</body>
+</html>

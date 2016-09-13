@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+		</script>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Aula 10-11</title>
+		
+		<style type ="text/css">
+			.subMenu{
+				display:none;
+				font-family: arial;
+				font-size: 14px;
+				list-style-type: none;
+				background-color: red;
+			}
+			
+			.mainMenu{
+				cursor:pointer;
+				font-family: arial;
+				font-size: 14px;
+				background-color: yellow;
+				list-style-type: none;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<ul class="mainMenu">
+			<li class="widthMenu">Main
+				<ul class="subMenu">
+					<li>Sub</li>
+					<li>Sub</li>
+					<li>Sub</li>
+				</ul>
+			</li>
+		</ul>
+	
+	
+		<script type="text/javascript">
+			$(main);
+			
+			function main(){
+				$(".mainMenu").click(function(){
+					$(".subMenu").slideToggle(500);
+				});
+			}
+			
+		</script>
+	</body>
+</html>

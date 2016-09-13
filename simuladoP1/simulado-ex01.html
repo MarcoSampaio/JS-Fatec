@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Simulado ex01</title>
+	</head>
+	<body>
+		
+		<script>
+		//Um objeto cliente possui campos nome, idade e salario. Um exemplo de objeto é:
+		//{nome:"Pedro", idade:29, salario:2000}. Faca uma funcao que receba um vetor de clientes e imprima
+		//no documento, em forma de tabela (tag table), todas as informacoes deste cliente. A funcao deve 
+		//informar também a idade media e a soma total dos salarios.
+		function mostraTabela(){
+			var pessoas = [
+				{nome:"Pedro", idade:29, salario:2000},
+				{nome:"Luiz", idade:32, salario:2300},
+				{nome:"Marco", idade:38, salario:3000}
+				];
+			var somaTotal = 0;
+			var totalIdades = 0;
+			var mediaIdades = 0;
+			
+			var tabela = '<table border="1"><thead><tr>';
+			tabela += '<th>Nome</th><th>Idade</th><th>';
+			tabela += 'Salario</th></tr></thead><tbody>';
+			
+			var i=0;
+			while(i < pessoas.length){
+				var cliente = pessoas[i];
+				somaTotal += cliente.salario;
+				totalIdades += cliente.idade;
+				tabela += "<tr><td>"+cliente.nome+"</td>";
+				tabela += "<td>"+cliente.idade+"</td>";
+				tabela += "<td>"+cliente.salario+"</td></tr>";
+				i++;
+			}
+			
+			mediaIdades = totalIdades/pessoas.length;
+			
+			tabela += "</tbody></table>";
+			tabela += "<p>Salários: "+somaTotal+"</p>";
+			tabela += "<p>Média: "+mediaIdades+"</p>";		
+			document.write(tabela);			
+		}
+		mostraTabela();
+		</script>
+
+	</body>
+</html>

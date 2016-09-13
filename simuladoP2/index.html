@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+		</script>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Simulado</title>
+		
+		<style type="text/css">
+			tr:even{
+				background-color:"red";
+			}
+			tr:odd{
+				background-color:"azul";
+			}
+		</style>
+	</head>
+	<body>
+		
+		<table>
+			<tr>
+				<th>1</th>
+			</tr>
+			<tr>
+				<th>2</th>
+			</tr>
+			<tr>
+				<th>3</th>
+			</tr>
+			<tr>
+				<th>4</th>
+			</tr>
+		</table>
+		
+		
+		<button id="b1">PINTAR</button>
+		<br>
+		<br>
+		<button id="clickme">OK</button>
+		<br>
+		<br>
+		<input type="text" id="email">
+		<button id="ok">OK</button>
+		<br>
+		<br>
+		<input type="text" id="t1">
+		<button id="buscar">Buscar</button>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>ID</th><th>Nome</th>
+				</tr>
+			
+			</thead>
+			<tbody>
+				<tr>
+					<td>01</td><td>Didi</td>
+				</tr>
+				<tr>
+					<td>02</td><td>Dedé</td>
+				</tr>
+				<tr>
+					<td>03</td><td>Mussum</td>
+				</tr>
+				<tr>
+					<td>04</td><td>Zacarias</td>
+				</tr>
+				<tr>
+					<td>05</td><td>Zacarias</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script>
+			//O seletor tr:even e tr:odd selecionam as tags tr com indices pares e impares respectivamente.
+			//Faca um script que pinte as linhas pares de vermelho e as impares de azul clicando em um botao
+			//de id b1.
+			$("#b1").click(function(){
+					//faz isso quando clicar
+					$("tr:even").css("background-color","red");
+					$("tr:odd").css("background-color","blue");				
+			});
+					
+			//Um botao de nome OK e id clickme eh mostrado na tela. Se este botao for clicado seu nome devera
+			//mudar para Clicado e se clicado novamente devera ser mudado para OK. Faca este script em JQuery.
+			$("#clickme").click(function(){
+					var ok = $(this).html()
+					if(ok == "OK"){
+						$("#clickme").html("Clicado");
+					}else{
+						$("#clickme").html("OK");
+					}
+			});
+			
+			//Em uma caixa de texto de id email, um email devera ser validado. Um email eh valido se este
+			//possuir o caracter @. Se o email difitado ser valido o botao de id ok devera ser visivel, se nao
+			//invisivel. Use slice, map, reduce e jQuery.
+			var main = function(){
+					//toda vez que soltar a tecla ao digitar no campo de id email
+					$("#email").keyup(function(){
+						//o this referencia o objeto DOM puro, nao tem jQuery
+						var texto = this.value;
+						//identificamos o botao para mostrar/esconder
+						var botao = $("#ok");
+						//converte texto em vetor
+						var arr = Array.prototype.slice.call(texto);
+						//funcao do map
+						var m = function(elem){
+							//se a letra for @, troca por 1
+							if(elem == "@"){
+								return 1;
+							}else{
+								return 0;
+							}
+						}
+						//funcao do reduce
+						var r = function(x,y){
+							//retorno de soma simples entre os elementos
+							return x + y;
+						}
+						//resultado que armazena conversao para numeros e a soma destes numeros com 0
+						var resultado = arr.map(m).reduce(r,0);
+							//verificacao de resultado
+						if(resultado == 1){
+							//email valido
+							botao.show();//show mostra
+						}else{
+							//email invalido
+							botao.hide();//hide esconde
+						}
+					});
+				}
+				$(main);
+			
+			//Em uma pagina, ha uma caixa de texto de id t1 e uma tabela conforme o quadro. Pinte de amarelo 
+			//a linha que conter o nome do cliente igual ao nome digitado na caixa. Se o cliente nao for 
+			//encontrado, pinte de branco a linha amarela para resetar a busca. Use slice, filter e jQuery.
+			var main = function(){
+				function buscar(){
+					//conteudo do campo de texto para comparacao
+					var texto = $("#t1").val().toLowerCase();//toLowerCase deixa texto minusculo
+					//selecionando todas as celulas da tabela
+					var tds = $("td");
+					//convertendo a nodeList para Array
+					var arr = Array.prototype.slice.call(tds);
+					var f = function(elem){
+						return elem.innerHTML.toLowerCase() == texto;//toLowerCase deixa texto minusculo
+					}
+					var m = function(elem){
+						return $(elem).css("background-color","yellow");
+					}
+					tds.css("background-color","white");
+					arr.filter(f).map(m);
+				}
+				$("#buscar").click(buscar);
+			}
+			$(main);
+		</script>
+	</body>
+</html>

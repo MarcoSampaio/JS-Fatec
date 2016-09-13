@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<script src="scrape.js"></script>
+<title>Aula 22-09</title>
+</head>
+<body>
+	<button onclick="teste()">OK</button>
+	<br><br>
+	<button onclick="teste1()">OK</button>
+	<br><br>
+	<form>
+		<input type="text" id="n1" name="nome">
+	</form>
+	<button onclick="teste2()">Ok</button>
+	<br><br>
+	<button onclick="teste3()">OK</button>
+	<br><br>
+	<button onclick="teste4()">OK</button>
+	
+	<script>
+	
+		
+	
+		function teste(){
+			//a funcao abaixo eh uma funcao anonima Closures
+			var s = function(a,b){
+				return a+b;
+			};
+			alert(s(5,6));
+		}
+		
+		function teste1(){
+			var btn=document.querySelector("button");
+			btn.onclick = function(){
+				alert("Mudei...");
+			};
+			btn.innerHTML = "Click me!";
+		}
+		
+		//faca um formulario com um campo chamado n1 esse campo recebera um numero. Faca um botao com um evento 
+		//de clique contendo uma funcao (). Se o numero digitado for possitivo, o botao devera conter (no evento
+		//de clique a funcao dobrar). Se o numero digitado for negativo, o botao devera conter o evento limpar
+		// (que limpa a caixa d etexto).
+		function teste2(){
+			var b = document.querySelector("button");
+			var n1 = parseInt(document.querySelector("#n1").value;
+			if(n1>=0){
+				b.innerHTML = "Dobro";
+				b.onclick = function(){
+					alert(2*n1);
+					b.onclick = teste2;
+					b.innerHTML = "Ok";
+				};
+			}else{
+				b.innerHTML = "Limpar"
+				b.onclick = function(){
+					document.querySelector("#n1").value = "";
+					b.onclick = teste2;
+					b.innerHTML = "Ok";
+				};
+			}
+		}
+		
+		//recebe uma funcao f como parametro
+		function apply(f,x){
+			return f(x);
+		}
+		
+		function teste3(){
+			var d = apply(function(x){return x+3},4);
+			alert(d);
+		}
+		
+		//exemplo de currying: eh uma funcao que retorna outra funcao contendo um ou mais parametros segurados
+		function curr(x){
+			return function (y){
+				return x+y;
+			};
+		}
+		
+		function teste4(){
+			var c = curr(5);
+			var e = c(2);
+			alert(e);
+		}
+	
+	</script>
+</body>
+</html>

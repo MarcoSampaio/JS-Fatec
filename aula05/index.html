@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html> 
+<head>
+	<script src="script.js"></script>
+	<title>AULA 01-09</title>
+</head>
+<body>
+	
+	<form name="form1">
+		Nome: <input type="text" name="nome"><br>
+	</form>
+	<button onclick="ola()">OK</button>
+	
+	<br>
+	<br>
+	
+	<form name="form2">
+		<label>Valor 1:
+			<input type="number" name="v1"><br>
+		</label>
+		<label>Valor 2:
+			<input type="number" name="v2"><br>
+		</label>
+	</form>
+	<button onclick="soma()">SOMAR</button>
+	
+	<br>
+	<br>
+	
+	<form name="form3">
+		<label>Peso:
+			<input type="number" name="pes"><br>
+		</label>
+		<label>Altura:
+			<input type="number" name="alt"><br>
+		</label>
+	</form>
+	<button onclick="imcrel()">CALCULAR</button>
+	<p id="p1"></p>
+	
+	<br>
+	<br>
+	
+	<form name="form4" action="sucesso.html" method="post" onsubmit="return validar()">
+		<label>Nome: <input type="text" name="nome"><br>
+		<label>Idade: <input type="number" name="idade">
+		</label>
+	</form>
+	<button onclick="validar()">OK</button>
+</body>
+</html>
